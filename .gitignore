@@ -1,0 +1,53 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Virtual environment directories
+.env
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# Poetry
+.poetry/
+poetry.lock
+
+# Pytest
+.cache
+*.cover
+coverage.xml
+*.coverage
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDE files
+.vscode/
+.idea/
+
+# Python Wheel files
+*.whl
+
+# Distribution / packaging
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local configuration files
+*.local
+
+# Logs
+*.log
+
+# Miscellaneous
+*.sqlite3
+
