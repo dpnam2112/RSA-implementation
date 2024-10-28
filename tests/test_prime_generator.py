@@ -1,6 +1,5 @@
 from src.prime_generator import is_prime
 
-
 def test_check_small_primes_true_positive():
     primes = [
         2, 3, 5, 7, 11, 13, 17, 19,

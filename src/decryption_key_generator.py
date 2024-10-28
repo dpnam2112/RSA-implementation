@@ -1,12 +1,13 @@
-from prime_generator import is_prime
 import random
 
 def gcd(p, q) : 
+    # find gcd of p and q by using Euclidean Algorithm
     while q:
         p, q = q, p % q
     return p
 
 def egcd(a, b) :
+    # find x, y satisfy ax + by = gcd(a,b) by using Extended Euclidean Algorithm
     s = 0
     old_s = 1
     t = 1
@@ -23,13 +24,17 @@ def egcd(a, b) :
     # return gcd, x, y
     return old_r, old_s, old_t
 
-def modularInverse(a, b) :
+def modular_inverse(a, b) :
+    # return modular inverse of a modulo b with a and b is co prime
+    # a * x (mod b) = 1
     gcd, x, y = egcd(a, b)
     if (x < 0) :
         x += b
     return x
 
-def generator_DecryptionKey(p, q, e):
+def generator_decryption_key(p, q, e):
+    # d is modular inverse of e modulo phiN with e and phiN is co prime
+    # e * d (mod phiN) = 1 
     phiN = (p - 1) * (q - 1)
-    d = modularInverse(e, phiN)
+    d = modular_inverse(e, phiN)
     return d
