@@ -1,26 +1,34 @@
 import random
+from typing import Callable
+from .prime_checker import PrimeChecker
 
-def is_prime(num, iterations=5):
-    """Check if number `num` is prime using the Miller-Rabin algorithm."""
-    if num <= 1: return False
-    if num <= 3: return True # 2 and 3 are primes
-    if num % 2 == 0: return False
+class PrimeGenerator:
+    def __init__(self, prime_checker: PrimeChecker | Callable):
+        """Generate a prime number.
 
-    exp_base2 = 0
-    odd_part = num - 1
-    while odd_part % 2 == 0:
-        odd_part //= 2
-        exp_base2 += 1
+        Args:
+        -  prime_checker: A callable object (like function) used to check if a number is a prime.
+        """
+        self.prime_checker = prime_checker
 
-    for _ in range(iterations):
-        base = random.randint(2, num - 2)  # Random base
-        x = pow(base, odd_part, num)
-        if x == 1 or x == num - 1:
-            continue
-        for _ in range(exp_base2 - 1):
-            x = pow(x, 2, num)
-            if x == num - 1:
-                break
-        else:
-            return False
-    return True
+    def __call__(self, bit_count: int = 1024) -> int:
+        """
+        Generate a prime number with the specified bit count.
+        :param bit_count: The number of bits for the prime number.
+        :return: A prime number with the specified bit count.
+        """
+        if bit_count < 1:
+            raise ValueError("bit_count must be at least 1")
+
+        lower_bound = 1 << (bit_count - 1)  # 2^(bit_count - 1)
+        upper_bound = (1 << bit_count) - 1   # 2^bit_count - 1
+
+        while True:
+            candidate = random.randint(lower_bound, upper_bound)
+
+            if candidate % 2 == 0 and candidate != 2:
+                # All even numbers except 2 are not primes.
+                candidate += 1
+
+            if self.prime_checker(candidate):
+                return candidate
