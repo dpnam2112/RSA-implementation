@@ -6,7 +6,9 @@ def gcd(p, q) :
         p, q = q, p % q
     return p
 
+# egcd(a: int, b: int)
 def egcd(a, b) :
+
     # find x, y satisfy ax + by = gcd(a,b) by using Extended Euclidean Algorithm
     s = 0
     old_s = 1
@@ -32,7 +34,7 @@ def modular_inverse(a, b) :
         x += b
     return x
 
-def generator_decryption_key(p, q, e):
+def generate_decryption_key(p, q, e):
     # d is modular inverse of e modulo phiN with e and phiN is co prime
     # e * d (mod phiN) = 1 
     phiN = (p - 1) * (q - 1)
