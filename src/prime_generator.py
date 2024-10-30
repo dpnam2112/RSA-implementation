@@ -1,3 +1,5 @@
+# Dependency injection
+
 import random
 from typing import Callable
 from .prime_checker import PrimeChecker

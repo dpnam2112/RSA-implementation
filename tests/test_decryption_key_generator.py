@@ -1,5 +1,4 @@
-from src.prime_generator import is_prime
-from src.decryption_key_generator import gcd, egcd, modular_inverse, generate_decryption_key
+from src.decryption_key_generator import generate_decryption_key
 
 # Result information are taken from https://www.tausquared.net/pages/ctf/rsa.html
 def test_generate_decryption_key():
