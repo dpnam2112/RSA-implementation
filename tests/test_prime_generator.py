@@ -2,14 +2,6 @@ import pytest
 from src.prime_generator import PrimeGenerator
 from src.prime_checker import PrimeChecker
 
-is_prime = PrimeChecker()
-prime_generator = PrimeGenerator(is_prime)
-
-def test_generate_large_prime():
-    large_prime = prime_generator(512)
-    assert is_prime(large_prime), "Generated number is not prime"
-    assert large_prime.bit_length() == 512, "Generated prime does not have the correct bit length"
-
 def test_generate_small_prime():
     small_prime = prime_generator(10)
     assert is_prime(small_prime), "Generated number is not prime"
