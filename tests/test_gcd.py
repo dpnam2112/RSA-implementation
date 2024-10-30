@@ -22,7 +22,7 @@ def test_gcd():
     assert EuclideanAlgorithm.gcd(982451653, 57885161) == 1 
     assert EuclideanAlgorithm.gcd(32452843, 982451653) == 1  
     assert EuclideanAlgorithm.gcd(2147483647, 2305843009213693951) == 1   
-    print("GCD PASSED!")
+  
 
 def test_ex_gcd():
     # Test case 1: Small numbers
@@ -56,10 +56,7 @@ def test_ex_gcd():
     
     gcd_val, x, y = EuclideanAlgorithm.ex_gcd(2147483647, 2305843009213693951)
     assert gcd_val == 1 and 2147483647 * x + 2305843009213693951 * y == gcd_val, f"Expected GCD(2147483647, 2305843009213693951) = 1, coefficients {x}, {y}"
-    print("EX_GCD PASSED!")
+
 
     
-if __name__ == "__main__":
-    test_gcd()    
-    test_ex_gcd()
-    
+
