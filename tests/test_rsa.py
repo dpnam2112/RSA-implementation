@@ -1,11 +1,14 @@
 import pytest
+from src.modular_exp import modular_exp
 from src.prime_checker import PrimeChecker
 from src.rsa import RSA
 from src.prime_generator import PrimeGenerator
 
-@pytest.fixture
+@pytest.fixture(scope="module")
 def rsa():
-    prime_generator = PrimeGenerator(PrimeChecker())
+    # Use custom function to calculate modular exponentiation instead of using Python's native `pow`.
+    modular_exp_callback = modular_exp
+    prime_generator = PrimeGenerator(PrimeChecker(modular_exp_callback))
     return RSA(prime_generator)
 
 def test_encryption_and_decryption(rsa):

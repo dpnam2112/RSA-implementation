@@ -41,7 +41,7 @@ class RSA:
         """
         n, e = self.public_key
         # Encrypt using modular exponentiation
-        encrypted_message = pow(message, e, n)
+        encrypted_message = modular_exp(message, e, n)
         return encrypted_message
 
     def decrypt(self, encrypted_message: int) -> int:
@@ -55,5 +55,5 @@ class RSA:
         """
         n, d = self.private_key
         # Decrypt using modular exponentiation
-        decrypted_message = pow(encrypted_message, d, n)
+        decrypted_message = modular_exp(encrypted_message, d, n)
         return decrypted_message
