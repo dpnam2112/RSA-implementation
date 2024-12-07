@@ -22,10 +22,10 @@ class RSA:
 
 
     def _generate_keys(self, file_name: str):
-        """Generates both the public and private keys for RSA.
+        """
+        Generates both the public and private keys for RSA.
 
-        Returns:
-        - tuple: The public key (n, e) and private key (n, d).
+        - Public Key and Private Key will be saved to JSON file.
         """
         p = self.prime_generator()
         q = self.prime_generator()
@@ -43,14 +43,13 @@ class RSA:
         }
         with open("text/" + file_name, "w") as json_file:
             json.dump(key_pair, json_file, indent= 4)
-        # Return the public and private keys
 
     def encrypt(self, message: int, e: int, n: int) -> int:
         """Encrypts a message using the public key (n, e).
         
         Args:
         - message: The message to encrypt (as an integer).
-
+        - (n, e): Public key.
         Returns:
         - encrypted_message: The encrypted message as an integer.
         """
@@ -64,6 +63,7 @@ class RSA:
         
         Args:
         - encrypted_message: The encrypted message (as an integer).
+        - (n, d): Private key.
 
         Returns:
         - decrypted_message: The decrypted message as an integer.
